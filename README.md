@@ -16,25 +16,21 @@ A small setup of TestCafe framework with test cases organised using Page Object 
 ### Running a test
 
   1. Open a terminal
-  2. Run:
-
-    npm install -g testcafe
-
-  3. Change directory to: 
+  2. Change directory to: 
   
     /e2e/tests/
 
-  4. Run all tests in a browser: 
+  3. Run all tests in a browser: 
 
     testcafe {list_of_browsers} *.js
 
     #### e.g testcafe safari,edge *
 
-  5. Run tests from one file: 
+  4. Run tests from one file: 
 
     testcafe {list_of_browsers} filename.js
 
-  6. Run specific tests: 
+  5. Run specific tests: 
 
     testcafe {list_of_browsers} ./filename.js/ -T "testname"
 

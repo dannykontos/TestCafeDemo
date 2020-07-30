@@ -5,6 +5,7 @@ import ErrorMessages from '../resources/errorMessages';
 import Url from '../pageModels/urls';
 import GooglePage from "../pageModels/googleHomepage";
 import BeezHomePage from "../pageModels/beezHomepage";
+import TestData from "../resources/testData";
 
 const getDocumentURI = require('../resources/utils.js').getDocumentURI;
 
@@ -49,4 +50,13 @@ test("Test empty Password error messages: regression", async t => {
     .click(HomePage.passwordTextBox)
     .click(HomePage.authenticationButton)
     .expect(BeezHomePage.usernameError.innerText).eql(ErrorMessages.emptyPasswordMessageRo)
+});
+
+test("Test incorrect Email and incorrect Password: sanity", async t => {
+  await t
+    .click(HomePage.signInButton)
+    .typeText(HomePage.usernameTextBox, TestData.email)
+    .typeText(HomePage.passwordTextBox, TestData.password)
+    .click(HomePage.authenticationButton)
+    .expect(HomePage.signInErrorMessage.innerText).contains(ErrorMessages.incorrectCredentialsRo)
 });
