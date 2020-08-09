@@ -7,6 +7,7 @@ class BeezHomePage {
     this.passwordTextBox = 'input[type="password"]';
     this.usernameError = Selector('.mat-error');
     this.authenticationButton = 'button[class="mat-focus-indicator btn_login mat-button mat-button-base"]';
+    this.signInErrorMessage = Selector('.cdk-overlay-container');
   }
 }
 export default new BeezHomePage();
