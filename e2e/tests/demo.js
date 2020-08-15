@@ -5,7 +5,7 @@ import ErrorMessages from '../resources/errorMessages';
 import Url from '../pageModels/urls';
 import GooglePage from "../pageModels/googleHomepage";
 import BeezHomePage from "../pageModels/beezHomepage";
-import TestData from  "../resources/testData";
+import TestData from "../resources/testData";
 
 const getDocumentURI = require('../resources/utils.js').getDocumentURI;
 
