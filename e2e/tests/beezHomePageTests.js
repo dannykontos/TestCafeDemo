@@ -16,7 +16,6 @@ test("Test that the Login page is opening successfully: smoke", async t => {
 
     const getUri = ClientFunction(() => {
         return getDocumentURI();
-
     }, { dependencies: { getDocumentURI } });
 
     const uri = await getUri();
