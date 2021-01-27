@@ -27,23 +27,36 @@ test("Test empty Username error messages: regression", async t => {
     await t
         .click(HomePage.signInButton)
         .click(HomePage.usernameTextBox)
-        .click(HomePage.authenticationButton)
-        .expect(BeezHomePage.usernameError.innerText).eql(ErrorMessages.emptyUsernameMessageRo)
+        .click(HomePage.continueButton)
+        .expect(BeezHomePage.usernameError.innerText).eql(ErrorMessages.emptyUsernameMessageEn)
 });
 
 test("Test empty Password error messages: regression", async t => {
     await t
         .click(HomePage.signInButton)
+        .typeText(HomePage.usernameTextBox, TestData.email)
+        .click(HomePage.continueButton)
         .click(HomePage.passwordTextBox)
         .click(HomePage.authenticationButton)
-        .expect(BeezHomePage.usernameError.innerText).eql(ErrorMessages.emptyPasswordMessageRo)
+        .expect(BeezHomePage.usernameError.innerText).eql(ErrorMessages.emptyPasswordMessageEn)
 });
 
-test("Test incorrect Email and incorrect Password: sanity", async t => {
+test("Test successful login: regression", async t => {
+    await t
+    .click(HomePage.signInButton)
+    .typeText(HomePage.usernameTextBox, TestData.email)
+    .click(HomePage.continueButton)
+    .typeText(HomePage.passwordTextBox, TestData.password)
+    .click(HomePage.authenticationButton)
+    .expect(HomePage.addToCartButton.exists).notOk();
+});
+
+test("Test incorrect Password error messages: regression", async t => {
     await t
         .click(HomePage.signInButton)
         .typeText(HomePage.usernameTextBox, TestData.email)
-        .typeText(HomePage.passwordTextBox, TestData.password)
+        .click(HomePage.continueButton)
+        .typeText(HomePage.passwordTextBox, TestData.incorrectPassword)
         .click(HomePage.authenticationButton)
-        .expect(HomePage.signInErrorMessage.innerText).contains(ErrorMessages.incorrectCredentialsRo)
+        .expect(BeezHomePage.PasswordError.innerText).eql(ErrorMessages.incorrectCredentialsEn)
 });
